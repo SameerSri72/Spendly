@@ -296,6 +296,216 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ------------------------------------------------------------------ */
+/* Hero v2 (new centered layout)                                       */
+/* ------------------------------------------------------------------ */
+
+.hero-new {
+    padding: 4rem 2rem 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+.hero-new-text {
+    text-align: center;
+    max-width: 680px;
+}
+
+.hero-badge-new {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #edfaf4;
+    color: #16a371;
+    border: 1px solid #b2e8d4;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.35rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 1.75rem;
+}
+
+.badge-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #16a371;
+    flex-shrink: 0;
+}
+
+.hero-title-new {
+    font-family: var(--font-body);
+    font-weight: 800;
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 1.25rem;
+}
+
+.hero-teal {
+    color: #16a371;
+}
+
+.hero-sub-new {
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+}
+
+.hero-plus-new {
+    font-size: 1.25rem;
+    color: var(--ink-faint);
+    margin-bottom: 1rem;
+    line-height: 1;
+}
+
+.hero-btns-new {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 3rem;
+}
+
+.btn-hero-new {
+    display: inline-block;
+    background: var(--ink);
+    color: #fff;
+    padding: 0.75rem 1.75rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.btn-hero-new:hover { background: #1a1a1a; }
+
+/* App preview frame */
+
+.app-frame {
+    width: 100%;
+    background: #f2f1ef;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+}
+
+.app-frame-chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0.75rem 1.25rem;
+}
+
+.chrome-dot {
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+
+.dot-red    { background: #ff5f57; }
+.dot-yellow { background: #febc2e; }
+.dot-green-c { background: #28c840; }
+
+.app-frame-body {
+    padding: 0 1.25rem 1.5rem;
+}
+
+/* Stat tiles */
+
+.stat-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.stat-tile {
+    background: #fff;
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+}
+
+.stat-tile-label {
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    margin-bottom: 0.35rem;
+}
+
+.stat-tile-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+}
+
+.stat-tile-sub {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+}
+
+.stat-red   { color: #e03e2d; }
+.stat-green { color: #16a371; }
+
+/* Category bars */
+
+.cat-bars {
+    background: #fff;
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+.cat-bar-row {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.cat-bar-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+}
+
+.cat-bar-track {
+    height: 10px;
+    background: #ebebeb;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.cat-bar {
+    height: 100%;
+    border-radius: 999px;
+    transition: width 0.6s ease;
+}
+
+.cat-orange { background: #f59e0b; }
+.cat-blue   { background: #3b82f6; }
+.cat-purple { background: #7c3aed; }
+
+@media (max-width: 600px) {
+    .stat-row { grid-template-columns: 1fr; }
+    .hero-title-new { font-size: 2.2rem; }
+    .hero-sub-new br { display: none; }
+}
+
+/* ------------------------------------------------------------------ */
 /* Features section                                                    */
 /* ------------------------------------------------------------------ */
 
