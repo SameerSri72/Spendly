@@ -63,7 +63,7 @@ def login():
         if user and check_password_hash(user["password_hash"], password):
             session["user_id"] = user["id"]
             flash(f"Welcome back, {user['name']}!", "success")
-            return redirect(url_for("landing"))
+            return redirect(url_for("profile"))
         flash("Invalid email or password.", "error")
         return render_template("login.html")
     return render_template("login.html")
@@ -91,7 +91,35 @@ def logout():
 
 @app.route("/profile")
 def profile():
-    return "Profile page — coming in Step 4"
+    if not session.get("user_id"):
+        return redirect(url_for("login"))
+
+    user = {
+        "name": "Alex Rivera",
+        "email": "alex@example.com",
+        "member_since": "January 2024",
+        "initials": "AR",
+    }
+    stats = {
+        "total_spent": "$2,847.50",
+        "transactions": 34,
+        "top_category": "Food & Dining",
+    }
+    transactions = [
+        {"date": "Apr 18, 2026", "description": "Grocery run", "category": "Food & Dining", "amount": "$62.40"},
+        {"date": "Apr 15, 2026", "description": "Spotify", "category": "Entertainment", "amount": "$9.99"},
+        {"date": "Apr 12, 2026", "description": "Bus pass", "category": "Transport", "amount": "$45.00"},
+        {"date": "Apr 10, 2026", "description": "Coffee shop", "category": "Food & Dining", "amount": "$5.80"},
+        {"date": "Apr 08, 2026", "description": "Electric bill", "category": "Utilities", "amount": "$110.00"},
+    ]
+    categories = [
+        {"name": "Food & Dining", "amount": "$980.20", "percent": 34},
+        {"name": "Transport", "amount": "$520.00", "percent": 18},
+        {"name": "Entertainment", "amount": "$310.50", "percent": 11},
+        {"name": "Utilities", "amount": "$890.00", "percent": 31},
+        {"name": "Shopping", "amount": "$146.80", "percent": 6},
+    ]
+    return render_template("profile.html", user=user, stats=stats, transactions=transactions, categories=categories)
 
 
 @app.route("/expenses/add")

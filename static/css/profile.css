@@ -1,0 +1,277 @@
+/* static/css/profile.css */
+
+.profile-page {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ── User info card ─────────────────────────────────────────── */
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: var(--paper-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.avatar {
+  flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--accent-light);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.profile-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.profile-name {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.profile-email {
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+  margin: 0;
+}
+
+.profile-since {
+  font-size: 0.8rem;
+  color: var(--ink-faint);
+  margin: 0;
+}
+
+/* ── Stats row ──────────────────────────────────────────────── */
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-card {
+  background: var(--paper-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+}
+
+.stat-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0 0 0.4rem;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.2;
+}
+
+.stat-value--text {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* ── Profile sections ───────────────────────────────────────── */
+
+.profile-section {
+  background: var(--paper-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.section-heading {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 1.25rem;
+}
+
+/* ── Expense table ──────────────────────────────────────────── */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.expense-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.expense-table th {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink-muted);
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.expense-table td {
+  padding: 0.8rem 0.75rem;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--ink);
+  vertical-align: middle;
+}
+
+.expense-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.expense-table tbody tr:hover td {
+  background: var(--paper);
+}
+
+.col-date {
+  color: var(--ink-muted);
+  white-space: nowrap;
+  font-size: 0.85rem;
+}
+
+.col-amount {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ── Category badges ────────────────────────────────────────── */
+
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.badge--food--dining {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.badge--transport {
+  background: var(--accent-2-light);
+  color: var(--accent-2);
+}
+
+.badge--entertainment {
+  background: var(--paper-warm);
+  color: var(--ink-soft);
+}
+
+.badge--utilities {
+  background: var(--border-soft);
+  color: var(--ink-muted);
+}
+
+.badge--shopping {
+  background: var(--danger-light);
+  color: var(--danger);
+}
+
+/* ── Category breakdown ─────────────────────────────────────── */
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.category-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.category-label {
+  width: 130px;
+  flex-shrink: 0;
+  font-size: 0.85rem;
+  color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 8px;
+  background: var(--border-soft);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 99px;
+  transition: width 0.3s ease;
+}
+
+.category-amount {
+  width: 72px;
+  flex-shrink: 0;
+  text-align: right;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Responsive ─────────────────────────────────────────────── */
+
+@media (max-width: 600px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 1.5rem;
+  }
+
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-section {
+    padding: 1.25rem;
+  }
+
+  .category-label {
+    width: 100px;
+  }
+}
