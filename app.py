@@ -2,6 +2,12 @@ import sqlite3
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from werkzeug.security import check_password_hash
 from database.db import get_db, init_db, seed_db, create_user, get_user_by_email
+from database.queries import (
+    get_user_by_id,
+    get_summary_stats,
+    get_recent_transactions,
+    get_category_breakdown,
+)
 
 app = Flask(__name__)
 app.secret_key = "spendly-dev-secret"
@@ -91,35 +97,28 @@ def logout():
 
 @app.route("/profile")
 def profile():
-    if not session.get("user_id"):
+    user_id = session.get("user_id")
+    if not user_id:
         return redirect(url_for("login"))
 
-    user = {
-        "name": "Alex Rivera",
-        "email": "alex@example.com",
-        "member_since": "January 2024",
-        "initials": "AR",
-    }
-    stats = {
-        "total_spent": "$2,847.50",
-        "transactions": 34,
-        "top_category": "Food & Dining",
-    }
-    transactions = [
-        {"date": "Apr 18, 2026", "description": "Grocery run", "category": "Food & Dining", "amount": "$62.40"},
-        {"date": "Apr 15, 2026", "description": "Spotify", "category": "Entertainment", "amount": "$9.99"},
-        {"date": "Apr 12, 2026", "description": "Bus pass", "category": "Transport", "amount": "$45.00"},
-        {"date": "Apr 10, 2026", "description": "Coffee shop", "category": "Food & Dining", "amount": "$5.80"},
-        {"date": "Apr 08, 2026", "description": "Electric bill", "category": "Utilities", "amount": "$110.00"},
-    ]
-    categories = [
-        {"name": "Food & Dining", "amount": "$980.20", "percent": 34},
-        {"name": "Transport", "amount": "$520.00", "percent": 18},
-        {"name": "Entertainment", "amount": "$310.50", "percent": 11},
-        {"name": "Utilities", "amount": "$890.00", "percent": 31},
-        {"name": "Shopping", "amount": "$146.80", "percent": 6},
-    ]
-    return render_template("profile.html", user=user, stats=stats, transactions=transactions, categories=categories)
+    user = get_user_by_id(user_id)
+    if user is None:
+        session.clear()
+        return redirect(url_for("login"))
+
+    user["initials"] = "".join(p[0] for p in user["name"].split()[:2]).upper()
+
+    stats = get_summary_stats(user_id)
+    transactions = get_recent_transactions(user_id, limit=10)
+    categories = get_category_breakdown(user_id)
+
+    return render_template(
+        "profile.html",
+        user=user,
+        stats=stats,
+        transactions=transactions,
+        categories=categories,
+    )
 
 
 @app.route("/expenses/add")
